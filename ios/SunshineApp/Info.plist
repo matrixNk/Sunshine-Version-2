@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- ── App metadata ──────────────────────────────────────────────── -->
+    <key>CFBundleDisplayName</key>
+    <string>Sunshine</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.example.sunshine</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+
+    <!-- ── OpenWeatherMap API key ─────────────────────────────────────
+         Set this in an Xcode xcconfig or via Xcode build settings so it
+         is not committed to source control.
+         e.g. add  OPEN_WEATHER_MAP_API_KEY = your_key_here  to a
+         Config.xcconfig and reference it as $(OPEN_WEATHER_MAP_API_KEY).
+    ──────────────────────────────────────────────────────────────────── -->
+    <key>OPEN_WEATHER_MAP_API_KEY</key>
+    <string>$(OPEN_WEATHER_MAP_API_KEY)</string>
+
+    <!-- ── Network ───────────────────────────────────────────────────── -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <!-- OWM free tier still serves HTTP; remove if using HTTPS only -->
+        <key>NSAllowsArbitraryLoads</key>
+        <false/>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>api.openweathermap.org</key>
+            <dict>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <false/>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+            </dict>
+        </dict>
+    </dict>
+
+    <!-- ── Background task identifier ───────────────────────────────── -->
+    <key>BGTaskSchedulerPermittedIdentifiers</key>
+    <array>
+        <string>com.example.sunshine.weather-refresh</string>
+    </array>
+
+    <!-- ── Background modes ──────────────────────────────────────────── -->
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>fetch</string>
+        <string>processing</string>
+    </array>
+
+    <!-- ── Privacy descriptions ──────────────────────────────────────── -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Sunshine can use your current location to show local weather.</string>
+
+    <!-- ── UI ────────────────────────────────────────────────────────── -->
+    <key>UILaunchScreen</key>
+    <dict/>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>UISupportedInterfaceOrientations~ipad</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationPortraitUpsideDown</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+</dict>
+</plist>
