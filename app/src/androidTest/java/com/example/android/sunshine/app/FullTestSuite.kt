@@ -13,20 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.sunshine.app;
+package com.example.android.sunshine.app
 
-import android.test.suitebuilder.TestSuiteBuilder;
+import android.test.suitebuilder.TestSuiteBuilder
+import junit.framework.Test
+import junit.framework.TestSuite
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
-public class FullTestSuite extends TestSuite {
-    public static Test suite() {
-        return new TestSuiteBuilder(FullTestSuite.class)
-                .includeAllPackagesUnderHere().build();
-    }
-
-    public FullTestSuite() {
-        super();
+class FullTestSuite : TestSuite() {
+    companion object {
+        @JvmStatic
+        fun suite(): Test = TestSuiteBuilder(FullTestSuite::class.java)
+            .includeAllPackagesUnderHere()
+            .build()
     }
 }
